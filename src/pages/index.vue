@@ -10,6 +10,7 @@ interface VideoType {
   url: string
   start: number
   timeRange: number
+  isPlayed?: boolean
 }
 
 // actions
@@ -26,12 +27,14 @@ const videos: VideoType[] = [
     url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
     start: 0,
     timeRange: 5,
+    isPlayed: false,
   },
   {
     id: '2',
     url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
     start: 4,
     timeRange: 5,
+    isPlayed: false,
   },
 ]
 
@@ -71,13 +74,31 @@ function onToggle() {
 }
 
 function onPlay() {
-  timer.value = setTimeout(() => {
+  if (currentTime.value < endingTime.value) {
     currentTime.value += 1
-  }, 1000)
+
+    videos.forEach((video, index) => {
+      if (video && !video.isPlayed && currentTime.value >= video.start) {
+        video.isPlayed = true
+        videoRefs.value[index].play()
+      }
+    })
+
+    // videoRefs.value.forEach((v) => {
+    //   const id = v.getAttribute('id')
+    //   const video = videos.find(v => v.id === id)
+
+    //   if (video && !video.isPlayed && currentTime.value >= video.start) {
+    //     video.isPlayed = true
+    //     v.play()
+    //   }
+    // })
+    timer.value = setTimeout(onPlay, 1000)
+  }
 }
 
 function onPause() {
-  clearTimeout(timer.value)
+  timer.value && clearTimeout(timer.value)
   timer.value = null
 }
 
@@ -102,7 +123,7 @@ function setRefs(r: Element | ComponentPublicInstance | null) {
     </div>
 
     <div m-t-20px cursor-pointer btn @click="onToggle">
-      {{ isPlay ? '暂停' : '播放' }}
+      {{ isPlay ? '暂停' : '播放' }}{{ currentTime }}
     </div>
   </div>
 </template>
