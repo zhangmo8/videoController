@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@unhead/vue':
     specifier: ^1.1.30
@@ -54,6 +58,9 @@ devDependencies:
   '@unocss/eslint-config':
     specifier: ^0.53.5
     version: 0.53.5(eslint@8.44.0)(typescript@5.1.6)
+  '@unocss/preset-icons':
+    specifier: ^0.54.0
+    version: 0.54.0
   '@vitejs/plugin-vue':
     specifier: ^4.2.3
     version: 4.2.3(vite@4.4.3)(vue@3.3.4)
@@ -2904,6 +2911,10 @@ packages:
     resolution: {integrity: sha512-jBvk4FeUAALAomGfMFFmrXLy01/5DjugdnWgawFAQpSToFTxbMHS7x+pXKu/18cq+YLS8uyl9S0Ywy1jNbfS3Q==}
     dev: true
 
+  /@unocss/core@0.54.0:
+    resolution: {integrity: sha512-iHfJJ8U+pVhMrbVpzMb0GImZUJu3Xmp165Q5Qr44hGOEzcMdvdBxbMSSl2VBKjRsEuNudNVhh7XJAyUcKxnSWg==}
+    dev: true
+
   /@unocss/eslint-config@0.53.5(eslint@8.44.0)(typescript@5.1.6):
     resolution: {integrity: sha512-13WZYFkOdls+K5ZYOdRINBZrj8qRKqMuqH4ty7l/B0tZ43b82jsWIP0qNTEW015gmQpktH9Hjwxvm8ctDIkN9A==}
     engines: {node: '>=14'}
@@ -2968,6 +2979,16 @@ packages:
     dependencies:
       '@iconify/utils': 2.1.7
       '@unocss/core': 0.53.5
+      ofetch: 1.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@unocss/preset-icons@0.54.0:
+    resolution: {integrity: sha512-WHdkpMzj6tohIkCc/+mEOzn0Yppqoz3y5zbI3WsDqA2/QFNSXx4haWcjV5iJI42uGcLXRp4K3l9JV3EL+oAxbg==}
+    dependencies:
+      '@iconify/utils': 2.1.7
+      '@unocss/core': 0.54.0
       ofetch: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -11165,7 +11186,3 @@ packages:
 
   /zhead@2.0.9:
     resolution: {integrity: sha512-Y3g6EegQc6PVrYXPq2OS7/s27UGVS5Y6NY6SY3XGH4Hg+yQWbQTtWsjCgmpR8kZnYrv8auB54sz+x5FEDrvqzQ==}
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

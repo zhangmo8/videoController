@@ -145,16 +145,17 @@ function setRefs(r: Element | ComponentPublicInstance | null) {
         </video>
       </div>
     </div>
-    <div relative box-border h-50px w-400px rd-2 bg-white>
-      <div absolute left-0 h-full w-4px bg-teal transition-transform :style="progress" />
-      <div v-for="item in videos" :key="item.id" m-t-10px h-5px rd-5px :style="{ ...generateStyle(item), background: item.background }" />
+    <div relative box-border h-30px w-400px rd-2 bg-white>
+      <div absolute left-0 z-2 h-full w-4px bg-teal transition-transform-250 :style="progress" />
+      <div v-for="item in videos" :key="item.id" m-t-7px h-5px rd-5px :style="{ ...generateStyle(item), background: item.background }" />
     </div>
 
-    <div v-if="!isEnded" m-t-20px cursor-pointer btn @click="onToggle">
-      {{ isPlay ? '暂停' : '播放' }}{{ currentTime }}
+    <div v-if="!isEnded" m-t-20px cursor-pointer @click="onToggle">
+      <div v-if="isPlay" i-carbon:stop icon-btn />
+      <div v-else i-carbon:play icon-btn />
     </div>
-    <div v-else m-t-20px cursor-pointer btn @click="onRePlay">
-      <div />
+    <div v-else m-t-20px cursor-pointer @click="onRePlay">
+      <div i-carbon:reset icon-btn />
     </div>
   </div>
 </template>
